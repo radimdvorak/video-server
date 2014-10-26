@@ -1,0 +1,11 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=F:/TBS/git/radimdvorak/video-server/3rdparty/x264/lib/win
+includedir=F:/TBS/git/radimdvorak/video-server/3rdparty/x264/include
+
+Name: x264
+Description: H.264 (MPEG4 AVC) encoder library
+Version: 0.142.x
+Libs: -LF:/TBS/git/radimdvorak/video-server/3rdparty/x264/lib/win -lx264 -lpthread
+Libs.private: 
+Cflags: -IF:/TBS/git/radimdvorak/video-server/3rdparty/x264/include

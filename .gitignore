@@ -1,1 +1,5 @@
+# temporary directories
 video-server.*
+bin
+build
+.idea
