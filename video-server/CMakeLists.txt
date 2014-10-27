@@ -34,6 +34,11 @@ if(WIN32)
 	set(OPENCV_LIBS opencv_core246 opencv_highgui246)
 endif()
 
+set(WIN32_LIBS "")
+if(WIN32)
+	set(WIN32_LIBS ws2_32)
+endif()
+
 target_link_libraries(video-server
 	PUBLIC liveMedia
 	PUBLIC UsageEnvironment
@@ -46,6 +51,7 @@ target_link_libraries(video-server
 	${OPENCV_LIBS}
 	PocoFoundation
 	PocoUtil
+  ${WIN32_LIBS}
 )
 
 install(
