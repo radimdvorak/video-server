@@ -9,7 +9,6 @@ set(FFMPEG_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib/${MY_PLATFORM})
 set(FFMPEG_LIBS ${FFMPEG_LIB_DIR}/libswscale.a ${FFMPEG_LIB_DIR}/libavutil.a
 	CACHE INTERNAL "ffmpeg libs"
 )
-message(STATUS "FFMPEG_LIBS: " ${FFMPEG_LIBS})
 
 execute_process(
 	COMMAND nproc
