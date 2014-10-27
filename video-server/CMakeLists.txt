@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.0)
 
 project(video-server)
 
+if(UNIX)
+	add_definitions(-D_LINUX -D_x86 -D__STDINT_MACROS -D__STDC_CONSTANT_MACROS)
+endif()
+
 set(SOURCE_FILES
   src/Utils/Conversion.cpp
   src/Utils/AVPixFormatHelper.cpp
@@ -16,8 +20,7 @@ set(SOURCE_FILES
 )
 
 include_directories(
-    ../3rdparty/include
-    ../3rdparty/include/ffmpeg
+    ${FFMPEG_INCLUDE_DIRS}
     ${X264_INCLUDE_DIRS}
     ${PVAPI_INCLUDE_DIRS}
 )
@@ -26,21 +29,10 @@ add_executable(video-server ${SOURCE_FILES})
 
 include(${CMAKE_SOURCE_DIR}/CMakeLists.Destination.txt)
 
+set(OPENCV_LIBS opencv_core opencv_highgui)
 if(WIN32)
-    set(FFMPEG_LIBRARIES
-        ${MY_3RDPARTY_LIB_DEST}/swscale-2.dll
-        ${MY_3RDPARTY_LIB_DEST}/ws2_32.dll
-        ${MY_3RDPARTY_LIB_DEST}/avutil-52.dll
-    )
-else()
-    set(FFMPEG_LIBRARIES
-        ${MY_3RDPARTY_LIB_DEST}/libswscale-2.so
-        ${MY_3RDPARTY_LIB_DEST}/libws2_32.so
-        ${MY_3RDPARTY_LIB_DEST}/libavutil-52.so
-    )
+	set(OPENCV_LIBS opencv_core246 opencv_highgui246)
 endif()
-
-message(STATUS "FFMPEG_LIBRARIES: " ${FFMPEG_LIBRARIES})
 
 target_link_libraries(video-server
 	PUBLIC liveMedia
@@ -49,10 +41,9 @@ target_link_libraries(video-server
 	PUBLIC groupsock
 	${X264_LIB}
 	${PVAPI_LIB}
-	${FFMPEG_LIBRARIES}
+	${FFMPEG_LIBS}
 	pthread
-	opencv_core246
-	opencv_highgui246
+	${OPENCV_LIBS}
 	PocoFoundation
 	PocoUtil
 )
@@ -61,3 +52,4 @@ install(
 	TARGETS video-server
 	DESTINATION ${MY_DEST}
 )
+

@@ -3,8 +3,12 @@
 #define X264Encoder_H_
 
 #ifdef __cplusplus
-#define __STDINT_MACROS
-#define __STDC_CONSTANT_MACROS
+#ifndef __STDINT_MACROS
+	#define __STDINT_MACROS
+#endif
+#ifndef __STDC_CONSTANT_MACROS
+	#define __STDC_CONSTANT_MACROS
+#endif
 #endif
 
 #include <iostream>
@@ -15,7 +19,7 @@
 
 extern "C" {
 	#include "x264.h"
-	#include "ffmpeg/libswscale/swscale.h"
+	#include "libswscale/swscale.h"
 }
 
 class X264Encoder {

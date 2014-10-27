@@ -23,7 +23,7 @@ Application::Setup::Setup() :
 }
 
 bool getVal(Poco::AutoPtr<Poco::Util::IniFileConfiguration> conf, const std::string& key, int& val) {
-	bool has = conf->has(key);
+	bool has = conf->hasProperty(key);
 	if (has) {
 		try {
 			val = conf->getInt(key);
@@ -48,7 +48,7 @@ bool getVal(Poco::AutoPtr<Poco::Util::IniFileConfiguration> conf, const std::str
 }
 
 bool getVal(Poco::AutoPtr<Poco::Util::IniFileConfiguration> conf, const std::string& key, std::string& val) {
-	bool has = conf->has(key);
+	bool has = conf->hasProperty(key);
 	if (has) {
 		try {
 			val = conf->getString(key);

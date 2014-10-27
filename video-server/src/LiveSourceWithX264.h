@@ -12,7 +12,7 @@
 #include <memory>
 #include <Poco/Timestamp.h>
 #include "X264Encoder.h"
-#include "opencv2\opencv.hpp"
+#include <opencv2/opencv.hpp>
 #include "FramedSource.hh"
 
 #include "CvVideoCapture.h"

@@ -279,7 +279,7 @@ void PvVideoCapture::stop() {
 
 	//Add delay between AcquisitionStop and PvCaptureQueueClear
 	//to give actively written frame time to complete
-	Sleep(200);
+	Poco::Thread::sleep(200);
 
 	if ((errCode = PvCaptureQueueClear(handle)) != ePvErrSuccess) {
 		std::cout << "PvCaptureQueueClear err: " << errCode << std::endl;

@@ -14,7 +14,7 @@
 #endif
 
 #include "PvApi.h"
-#include "ffmpeg/libavutil/pixfmt.h"
+#include "libavutil/pixfmt.h"
 #include <string>
 
 struct _PvImageFormat {

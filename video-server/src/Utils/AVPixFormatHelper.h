@@ -9,7 +9,7 @@
 #define AVPIXFORMATHELPER_H_
 
 #include <string>
-#include "ffmpeg/libavutil/pixfmt.h"
+#include "libavutil/pixfmt.h"
 
 class AVPixFormatHelper {
 	public:

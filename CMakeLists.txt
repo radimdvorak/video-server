@@ -17,5 +17,10 @@ if(WIN32)
   set(MY_PLATFORM win)
 endif()
 
+set(MY_BUILD_COMMAND make)
+if(WIN32)
+  set(MY_BUILD_COMMAND mingw32-make)
+endif()
+
 add_subdirectory(3rdparty)
 add_subdirectory(video-server)
