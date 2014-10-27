@@ -36,6 +36,6 @@ ExternalProject_Add(
 ExternalProject_Add_Step(X264 installInternally
                          COMMAND cd <SOURCE_DIR> && make install-lib-static
                          DEPENDEES install
-#                         ALWAYS 1
+                         ALWAYS 1
 )
 

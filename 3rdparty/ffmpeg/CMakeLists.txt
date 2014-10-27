@@ -29,6 +29,6 @@ ExternalProject_Add(
 ExternalProject_Add_Step(FFMPEG installInternally
                          COMMAND cd <SOURCE_DIR> && make install
                          DEPENDEES install
-#                         ALWAYS 1
+                         ALWAYS 1
 )
 
