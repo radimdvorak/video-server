@@ -3,3 +3,4 @@ video-server.*
 bin
 build
 .idea
+lib
