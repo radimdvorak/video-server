@@ -1,0 +1,14 @@
+prefix=/home/dron/git/radimdvorak/video-server/3rdparty/ffmpeg
+exec_prefix=${prefix}
+libdir=/home/dron/git/radimdvorak/video-server/3rdparty/ffmpeg/lib/lin_x86
+includedir=/home/dron/git/radimdvorak/video-server/3rdparty/ffmpeg/include
+
+Name: libavutil
+Description: FFmpeg utility library
+Version: 54.7.100
+Requires: 
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavutil -lm
+Libs.private: 
+Cflags: -I${includedir}

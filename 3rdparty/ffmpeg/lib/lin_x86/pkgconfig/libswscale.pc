@@ -1,0 +1,14 @@
+prefix=/home/dron/git/radimdvorak/video-server/3rdparty/ffmpeg
+exec_prefix=${prefix}
+libdir=/home/dron/git/radimdvorak/video-server/3rdparty/ffmpeg/lib/lin_x86
+includedir=/home/dron/git/radimdvorak/video-server/3rdparty/ffmpeg/include
+
+Name: libswscale
+Description: FFmpeg image rescaling library
+Version: 3.0.100
+Requires: libavutil >= 54.7.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lswscale -lm
+Libs.private: 
+Cflags: -I${includedir}
