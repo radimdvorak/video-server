@@ -11,7 +11,12 @@
 
 int main(int argc, char* argv[]) {
 	try {
-		Application::Setup setup = Application::Setup::load("VideoServer.ini");
+		std::string ini("VideoServer.ini");
+		if (argc > 1) {
+			ini = std::string(argv[1]);
+		}
+
+		Application::Setup setup = Application::Setup::load(ini);
 
 		Application app(setup);
 
