@@ -21,10 +21,18 @@ class Application {
 		static void term();
 
 	public:
+		struct CameraSource {
+			std::string source;
+			std::size_t index; ///< index of camera, e.g. for CvCapture
+
+			CameraSource(const std::string& source, std::size_t index)
+				: source(source), index(index) {}
+		};
+
 		struct Setup {
 				int port;
 				std::string streamName;
-				std::string cameraSource;
+				CameraSource cameraSource;
 
 				cv::Size outSize;
 

@@ -31,7 +31,7 @@ void X264Encoder::initilize() {
 	parameters.i_threads = 2;
 	parameters.i_width = setup.outSize.width;
 	parameters.i_height = setup.outSize.height;
-	parameters.i_fps_num = setup.inFPS > 0 ? setup.inFPS : 25;
+	parameters.i_fps_num = setup.inFPS > 0 && setup.inFPS <= 100 ? setup.inFPS : 25;
 	parameters.i_fps_den = 1;
 	parameters.i_keyint_max = parameters.i_fps_num;
 	parameters.b_intra_refresh = 1;

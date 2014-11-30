@@ -12,11 +12,12 @@ class H264LiveServerMediaSession: public OnDemandServerMediaSubsession {
 			UsageEnvironment& env;
 			bool reuseFirstSource;
 			std::string cameraSource;
+			std::size_t cameraIndex;
 
 			cv::Size outSize;
 
 			Setup(
-				UsageEnvironment& env, bool reuseFirstSource, const std::string& cameraSource,
+				UsageEnvironment& env, bool reuseFirstSource, const std::string& cameraSource, std::size_t cameraIndex,
 				const cv::Size& outSize
 			);
 		};

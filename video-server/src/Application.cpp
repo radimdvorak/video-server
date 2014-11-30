@@ -18,7 +18,7 @@ void Application::term() {
 }
 
 Application::Setup::Setup() :
-	port(8554), streamName("cam"), cameraSource(LiveSourceWithx264::Source_USB),
+	port(8554), streamName("cam"), cameraSource(LiveSourceWithx264::Source_USB, 0),
 	outSize(640, 480) {
 }
 
@@ -86,7 +86,8 @@ Application::Setup Application::Setup::load(const std::string& iniFile) {
 	KeyList missingKeys;
 	getVal(conf, "EndPoint.Port", setup.port, missingKeys);
 	getVal(conf, "EndPoint.Suffix", setup.streamName, missingKeys);
-	getVal(conf, "Camera.Source", setup.cameraSource, missingKeys);
+	getVal(conf, "Camera.Source", setup.cameraSource.source, missingKeys);
+	getVal(conf, "Camera.SourceIndex", setup.cameraSource.index, missingKeys);
 	getVal(conf, "Output.FrameWidth", setup.outSize.width, missingKeys);
 	getVal(conf, "Output.FrameHeight", setup.outSize.height, missingKeys);
 
@@ -110,7 +111,8 @@ void Application::save(const std::string& iniFile, const Setup& setup) {
 
 	ofs << "[Camera]" << "\n";
 	ofs << "; " << LiveSourceWithx264::Source_USB << ", " << LiveSourceWithx264::Source_PvAPI << "\n";
-	ofs << "Source = " << setup.cameraSource << "\n";
+	ofs << "Source = " << setup.cameraSource.source << "\n";
+	ofs << "SourceIndex = " << setup.cameraSource.index << "\n";
 
 	ofs << "[Output]" << "\n";
 	ofs << "FrameWidth = " << setup.outSize.width << "\n";
@@ -136,7 +138,8 @@ Application::Application(const Setup& setup) :
 			H264LiveServerMediaSession::Setup(
 					*usageEnvironment,
 					true,
-					setup.cameraSource,
+					setup.cameraSource.source,
+					setup.cameraSource.index,
 					setup.outSize
 	));
 	sms->addSubsession(liveSubSession);

@@ -1,9 +1,9 @@
 #include "H264LiveServerMediaSession.h"
 
 H264LiveServerMediaSession::Setup::Setup(
-		UsageEnvironment& env, bool reuseFirstSource, const std::string& cameraSource,
+		UsageEnvironment& env, bool reuseFirstSource, const std::string& cameraSource, std::size_t cameraIndex,
 		const cv::Size& outSize)
-	: env(env), reuseFirstSource(reuseFirstSource), cameraSource(cameraSource),
+	: env(env), reuseFirstSource(reuseFirstSource), cameraSource(cameraSource), cameraIndex(cameraIndex),
 	  outSize(outSize) {
 }
 
@@ -76,7 +76,7 @@ FramedSource* H264LiveServerMediaSession::createNewStreamSource(unsigned clientS
 	source = LiveSourceWithx264::createNew(LiveSourceWithx264::Setup(
 			envir(),
 			setup.cameraSource,
-			0,
+			setup.cameraIndex,
 			setup.outSize
 	));
 	// are you trying to keep the reference of the source somewhere? you shouldn't.
